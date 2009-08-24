@@ -1,8 +1,10 @@
 class CreateTransfers < ActiveRecord::Migration
   def self.up
     create_table :transfers do |t|
-      t.owner :source
-      t.owner :destination
+      t.integer :handler_id
+      t.integer :patron_id
+      t.integer :vial_id
+      t.integer :slot_id
       t.datetime :when
       t.string :type
       t.text :comment

@@ -1,18 +1,25 @@
 <p>
   <b>Source:</b>
-  <%=h @transfer.source %>
+  <%=h @transfer.handler %>
 </p>
 
 <p>
   <b>Destination:</b>
-  <%=h @transfer.destination %>
+  <%=h @transfer.patron %>
 </p>
 
 <p>
   <b>When:</b>
   <%=h @transfer.when %>
 </p>
-
+<p>
+  <b>Vial:</b>
+  <%=h @transfer.vial %>
+</p>
+<p>
+  <b>Slot:</b>
+  <%=h @transfer.slot %>
+</p>
 <p>
   <b>Type:</b>
   <%=h @transfer.type %>

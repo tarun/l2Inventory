@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090824195658) do
+ActiveRecord::Schema.define(:version => 20090824223212) do
 
   create_table "boxes", :force => true do |t|
     t.integer  "number"
@@ -34,6 +34,18 @@ ActiveRecord::Schema.define(:version => 20090824195658) do
 
   create_table "slots", :force => true do |t|
     t.integer  "box_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "transfers", :force => true do |t|
+    t.integer  "handler_id"
+    t.integer  "patron_id"
+    t.integer  "vial_id"
+    t.integer  "slot_id"
+    t.datetime "when"
+    t.string   "type"
+    t.text     "comment"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

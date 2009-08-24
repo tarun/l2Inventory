@@ -11,8 +11,10 @@
 
 <% @transfers.each do |transfer| %>
   <tr>
-    <td><%=h transfer.source %></td>
-    <td><%=h transfer.destination %></td>
+    <td><%=h transfer.handler %></td>
+    <td><%=h transfer.patron %></td>
+    <td><%=h transfer.vial %></td>
+    <td><%=h transfer.slot %></td>
     <td><%=h transfer.when %></td>
     <td><%=h transfer.type %></td>
     <td><%=h transfer.comment %></td>
