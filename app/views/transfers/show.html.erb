@@ -1,0 +1,28 @@
+<p>
+  <b>Source:</b>
+  <%=h @transfer.source %>
+</p>
+
+<p>
+  <b>Destination:</b>
+  <%=h @transfer.destination %>
+</p>
+
+<p>
+  <b>When:</b>
+  <%=h @transfer.when %>
+</p>
+
+<p>
+  <b>Type:</b>
+  <%=h @transfer.type %>
+</p>
+
+<p>
+  <b>Comment:</b>
+  <%=h @transfer.comment %>
+</p>
+
+
+<%= link_to 'Edit', edit_transfer_path(@transfer) %> |
+<%= link_to 'Back', transfers_path %>
