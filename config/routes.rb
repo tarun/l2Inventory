@@ -1,10 +1,10 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :transfers
-  map.resource :slot
-  map.resource :box
-  map.resource :shelf
-  map.resource :vial
-  map.resource :owner
+  map.resources :slots
+  map.resources :boxes
+  map.resources :shelves
+  map.resources :vials
+  map.resources :owners
 
 
 
