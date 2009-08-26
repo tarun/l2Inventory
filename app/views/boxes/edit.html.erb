@@ -1,2 +1,14 @@
-<h1>Boxes#edit</h1>
-<p>Find me in app/views/boxes/edit.html.erb</p>
+<h1>Edit Box</h1>
+
+<% form_for(@box) do |f| %>
+  <%= f.error_messages %>
+
+  <%= render :partial => 'form', :locals => {:f => f } %>
+
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @box %> |
+<%= link_to 'Back', boxes_path %>

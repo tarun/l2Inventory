@@ -1,2 +1,24 @@
-<h1>Boxes#index</h1>
-<p>Find me in app/views/boxes/index.html.erb</p>
+<h1>Listing Boxes</h1>
+
+<table>
+  <tr>
+    <th>Number</th>
+    <th>Shelf</th>
+    <th>Owner</th>
+  </tr>
+
+<% @boxes.each do |box| %>
+  <tr>
+    <td><%=h box.number %></td>
+    <td><%=h box.shelf %></td>
+    <td><%=h box.owner %></td>
+    <td><%= link_to 'Show', box %></td>
+    <td><%= link_to 'Edit', edit_box_path(box) %></td>
+    <td><%= link_to 'Destroy', box, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New box', new_box_path %>
