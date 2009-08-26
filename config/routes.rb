@@ -1,5 +1,19 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :transfers
+  map.resource :slot
+  map.resource :box
+  map.resource :shelf
+  map.resource :vial
+  map.resource :owner
+
+
+
+
+  # Info and other almost static pages
+  map.home '', :controller => 'main', :action => 'index'
+  map.about 'about', :controller => 'main', :action => 'about'
+  map.contact 'contact', :controller => 'main', :action => 'contact'
+  map.help 'help', :controller => 'main', :action => 'help'
 
   # The priority is based upon order of creation: first created -> highest priority.
 
