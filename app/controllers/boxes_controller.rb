@@ -40,14 +40,43 @@ class BoxesController < ApplicationController
   # POST /boxes
   # POST /boxes.xml
   def create
-    @box = Box.new(params[:box])
+    error = false
+    msg = ""
+    @box = Box.new
+
+    shelf = Shelf.find_by_number(params[:box][:shelf])
+    unless shelf
+      error = true
+      msg << "Shelf does not exist"
+    else
+      @box.shelf = shelf
+      box = shelf.boxes.find_by_number(params[:box][:number])
+      if box
+        error = true
+        msg << "Box already exists, Please Edit and Update Instead"
+        redirect_to edit_box_path(box)        
+        flash[:notice] = msg
+        return
+      else
+        @box.number = params[:box][:number]
+      end
+    end    
+
+    owner = Owner.find_by_name(params[:box][:owner])
+    unless owner
+      error = true
+      msg << "Owner name unknown"
+    else
+      @box.owner = owner
+    end            
 
     respond_to do |format|
-      if @box.save
+      if !error and @box.save
         flash[:notice] = 'Box was successfully created.'
         format.html { redirect_to(@box) }
         format.xml  { render :xml => @box, :status => :created, :location => @box }
       else
+        flash[:notice] = msg
         format.html { render :action => "new" }
         format.xml  { render :xml => @box.errors, :status => :unprocessable_entity }
       end
@@ -59,12 +88,44 @@ class BoxesController < ApplicationController
   def update
     @box = Box.find(params[:id])
 
+        error = false
+    msg = ""
+    @box = Box.new
+
+    shelf = Shelf.find_by_number(params[:box][:shelf])
+    unless shelf
+      error = true
+      msg << "Shelf does not exist"
+    else
+      @box.shelf = shelf
+      box = shelf.boxes.find_by_number(params[:box][:number])
+      if box
+        error = true
+        msg << "Box already exists, Please Edit and Update Instead"
+        redirect_to edit_box_path(box)
+        flash[:notice] = msg
+        return
+      else
+        @box.number = params[:box][:number]
+      end
+    end
+
+    owner = Owner.find_by_name(params[:box][:owner])
+    unless owner
+      error = true
+      msg << "Owner name unknown"
+    else
+      @box.owner = owner
+    end
+
+
     respond_to do |format|
-      if @box.update_attributes(params[:box])
+      if !error and @box.update_attributes(params[:box])
         flash[:notice] = 'Box was successfully updated.'
         format.html { redirect_to(@box) }
         format.xml  { head :ok }
       else
+        flash[:notice] = msg
         format.html { render :action => "edit" }
         format.xml  { render :xml => @box.errors, :status => :unprocessable_entity }
       end

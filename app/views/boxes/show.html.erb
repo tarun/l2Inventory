@@ -5,9 +5,9 @@
 </p>
 <p>
   <b>Shelf:</b>
-  <%=h @box.shelf %>
+  <%=h @box.shelf.number %>
 </p>
 <p>
   <b>Owner:</b>
-  <%=h @box.owner %>
+  <%=h @box.owner.name if (@box and @box.owner) %>
 </p>

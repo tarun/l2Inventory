@@ -10,8 +10,8 @@
 <% @boxes.each do |box| %>
   <tr>
     <td><%=h box.number %></td>
-    <td><%=h box.shelf %></td>
-    <td><%=h box.owner %></td>
+    <td><%=h shelf_name(box) %></td>
+    <td><%=h owner_name(box) %></td>
     <td><%= link_to 'Show', box %></td>
     <td><%= link_to 'Edit', edit_box_path(box) %></td>
     <td><%= link_to 'Destroy', box, :confirm => 'Are you sure?', :method => :delete %></td>
