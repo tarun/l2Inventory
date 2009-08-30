@@ -1,2 +1,13 @@
-<h1>Slots#edit</h1>
-<p>Find me in app/views/slots/edit.html.erb</p>
+<h1>Edit Slot</h1>
+
+<% form_for(@slot) do |f| %>
+  <%= f.error_messages %>
+
+  <%= render :partial => 'form', :locals => {:f => f, :slot => @slot } %>
+
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', slots_path %>

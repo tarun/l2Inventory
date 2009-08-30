@@ -1,2 +1,14 @@
-<h1>Slots#new</h1>
-<p>Find me in app/views/slots/new.html.erb</p>
+<h1>New Slot</h1>
+
+<% form_for(@slot) do |f| %>
+  <%= f.error_messages %>
+
+  <%= render :partial => 'form', :locals => {:f => f, :slot => @slot } %>
+
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @slot %> |
+<%= link_to 'Back', slots_path %>

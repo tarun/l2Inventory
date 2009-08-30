@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(:version => 20090824223212) do
 
   create_table "slots", :force => true do |t|
     t.integer  "box_id"
+    t.integer  "number"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

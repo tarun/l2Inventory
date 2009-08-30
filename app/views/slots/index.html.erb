@@ -1,2 +1,22 @@
-<h1>Slots#index</h1>
-<p>Find me in app/views/slots/index.html.erb</p>
+<h1>Listing Slots</h1>
+
+<table>
+  <tr>
+    <th>Number</th>
+    <th>Box</th>
+  </tr>
+
+<% @slots.each do |slot| %>
+  <tr>
+    <td><%=h slot.number %></td>
+    <td><%=h box_name(slot) %></td>
+    <td><%= link_to 'Show', slot %></td>
+    <td><%= link_to 'Edit', edit_slot_path(slot) %></td>
+    <td><%= link_to 'Destroy', slot, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New slot', new_slot_path %>

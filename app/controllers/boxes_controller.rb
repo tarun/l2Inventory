@@ -88,9 +88,8 @@ class BoxesController < ApplicationController
   def update
     @box = Box.find(params[:id])
 
-        error = false
+    error = false
     msg = ""
-    @box = Box.new
 
     shelf = Shelf.find_by_number(params[:box][:shelf])
     unless shelf
