@@ -5,7 +5,7 @@ class CreateVials < ActiveRecord::Migration
       t.integer :owner_id
       t.string :name      
       t.integer :p_value
-      t.datetime :frozen
+      t.datetime :frozen_on
       t.text :comment
       t.boolean :present
       t.timestamps

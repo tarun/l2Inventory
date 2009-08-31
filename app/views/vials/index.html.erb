@@ -1,2 +1,26 @@
-<h1>Vials#index</h1>
-<p>Find me in app/views/vials/index.html.erb</p>
+<h1>Listing Vials</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>P Value</th>
+    <th>Frozen</th>
+    <th>Present</th>
+  </tr>
+
+<% @vials.each do |vial| %>
+  <tr>
+    <td><%=h vial.name %></td>
+    <td><%=h vial.p_value %></td>
+    <td><%=h vial.frozen_on %></td>
+    <td><%=h vial.present %></td>
+    <td><%= link_to 'Show', vial %></td>
+    <td><%= link_to 'Edit', edit_vial_path(vial) %></td>
+    <td><%= link_to 'Destroy', vial, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New vial', new_vial_path %>

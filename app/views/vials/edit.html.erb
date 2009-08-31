@@ -1,2 +1,14 @@
-<h1>Vials#edit</h1>
-<p>Find me in app/views/vials/edit.html.erb</p>
+<h1>Edit Vial</h1>
+
+<% form_for(@vial) do |f| %>
+  <%= f.error_messages %>
+
+  <%= render :partial => 'form', :locals => {:f => f } %>
+
+  <p>
+    <%= f.submit 'Edit' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @vial %> |
+<%= link_to 'Back', vials_path %>

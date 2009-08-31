@@ -1,2 +1,13 @@
-<h1>Vials#new</h1>
-<p>Find me in app/views/vials/new.html.erb</p>
+<h1>New Vial</h1>
+
+<% form_for(@vial) do |f| %>
+  <%= f.error_messages %>
+
+  <%= render :partial => 'form', :locals => {:f => f } %>
+
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', vials_path %>

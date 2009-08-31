@@ -1,0 +1,12 @@
+<p>
+  <%= f.label :number %><br />
+  <%= f.text_field :number %>
+</p>
+<p>
+  <%= f.label :shelf %><br />
+  <%= f.text_field :shelf, :value => shelf_number(slot) %>
+</p>
+<p>
+  <%= f.label :box %><br />
+  <%= f.text_field :box, :value => box_number(slot) %>
+</p>
