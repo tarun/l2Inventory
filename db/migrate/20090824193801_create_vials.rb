@@ -1,8 +1,8 @@
 class CreateVials < ActiveRecord::Migration
   def self.up
     create_table :vials do |t|
-      t.integer :slot_id
-      t.integer :owner_id
+      t.references :slot
+      t.references :owner
       t.string :name      
       t.integer :p_value
       t.datetime :frozen_on

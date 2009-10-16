@@ -3,8 +3,8 @@ class CreateTransfers < ActiveRecord::Migration
     create_table :transfers do |t|
       t.integer :handler_id
       t.integer :patron_id
-      t.integer :vial_id
-      t.integer :slot_id
+      t.references :vial
+      t.references :slot
       t.datetime :when
       t.string :type
       t.text :comment

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091015220145) do
+ActiveRecord::Schema.define(:version => 20091016163813) do
 
   create_table "boxes", :force => true do |t|
     t.integer  "number"
@@ -47,6 +47,14 @@ ActiveRecord::Schema.define(:version => 20091015220145) do
     t.datetime "when"
     t.string   "type"
     t.text     "comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "user_owner_affiliations", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "owner_id"
+    t.string   "nature"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
