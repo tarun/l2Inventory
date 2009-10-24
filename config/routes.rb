@@ -3,15 +3,17 @@ ActionController::Routing::Routes.draw do |map|
   map.login "login", :controller => "user_sessions", :action => "new"
   map.logout "logout", :controller => "user_sessions", :action => "destroy"  
 
-  map.resources :users, :has_many => :owners
   map.resources :user_sessions
+  map.resources :users, :has_many => :owners, :member => { :unlink => :put } 
+  map.resources :owners, :has_many => :users, :member => { :unlink => :put } 
+  
   
   map.resources :transfers
   map.resources :slots
   map.resources :boxes
   map.resources :shelves
   map.resources :vials
-  map.resources :owners  
+  
 
   # Info and other almost static pages
   map.root :controller => 'main', :action => 'index'

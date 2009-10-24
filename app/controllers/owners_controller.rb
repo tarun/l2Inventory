@@ -45,7 +45,7 @@ class OwnersController < ApplicationController
     respond_to do |format|
       if @owner.save
         flash[:notice] = 'Owner was successfully created.'
-        format.html { redirect_to(@owner) }
+        format.html { redirect_to([:user, @owner]) }
         format.xml  { render :xml => @owner, :status => :created, :location => @owner }
       else
         format.html { render :action => "new" }
@@ -62,7 +62,8 @@ class OwnersController < ApplicationController
     respond_to do |format|
       if @owner.update_attributes(params[:owner])
         flash[:notice] = 'Owner was successfully updated.'
-        format.html { redirect_to(@owner) }
+        #format.html { redirect_to(user_owner_path(@owner, params[:user_id])) }
+        format.html { redirect_to([:user, @owner]) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -78,8 +79,17 @@ class OwnersController < ApplicationController
     @owner.destroy
 
     respond_to do |format|
-      format.html { redirect_to(owners_url) }
+      format.html { redirect_to(user_owners_url) }
       format.xml  { head :ok }
     end
+  end
+  
+  # POST /owners;unlink_user/1
+  # POST /owners;unlink_user/1.xml
+  def unlink_user
+    @owner = Owner.find(params[:id])
+    @user = User.find(params[:user_id])
+    
+    @owner.remove_user
   end
 end
