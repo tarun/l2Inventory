@@ -1,6 +1,6 @@
 <h1>Edit Owner</h1>
 
-<% form_for([:user, @owner]) do |f| %>
+<% form_for(@owner) do |f| %>
   <%= f.error_messages %>
 
   <%= render :partial => 'form', :locals => {:f => f } %>

@@ -4,8 +4,17 @@ ActionController::Routing::Routes.draw do |map|
   map.logout "logout", :controller => "user_sessions", :action => "destroy"  
 
   map.resources :user_sessions
-  map.resources :users, :has_many => :owners, :member => { :unlink => :put } 
-  map.resources :owners, :has_many => :users, :member => { :unlink => :put } 
+
+# Let us first do an owner has multiple users, a user having multiple accounts can be done later.  
+#  map.resources :users do |user| 
+#	user.resources :owners, :member => { :unlink => :put, :link => :put }
+#  end
+  
+  map.resources :owners do |owner|
+	owner.resources :users, :member => { :unlink => :put, :link => :put } 
+  end
+  
+# map.register "register", new_owner_user_path
   
   
   map.resources :transfers

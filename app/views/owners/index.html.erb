@@ -10,14 +10,13 @@
   <tr>
     <td><%=h owner.name %></td>
     <td><%=h owner.details %></td>
-    <td><%= link_to 'Show', [current_user, owner] %></td>
-    <td><%= link_to 'Edit', edit_user_owner_path(current_user, owner) %></td>
-    <td><%= link_to 'Destroy', [current_user, owner], :confirm => 'Are you sure?', :method => :delete %></td>
-    <td><%= link_to 'Un-Link Account', unlink_user_owner_path([current_user, owner]) %></td>
+    <td><%= link_to 'Show', owner %></td>
+    <td><%= link_to 'Edit', edit_owner_path(owner) %></td>
+    <td><%= link_to 'Destroy', owner, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New owner', new_user_owner_path(current_user) %>
+<%= link_to 'New owner', new_owner_path %>

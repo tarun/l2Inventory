@@ -2,6 +2,7 @@ class CreateOwners < ActiveRecord::Migration
   def self.up
     create_table :owners do |t|
       t.string :name
+      # t.string :group
       t.text :details
       t.timestamps
     end

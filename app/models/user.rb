@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :user_account_affiliations
+  has_many :user_owner_affiliations
   has_many :owners, :through => :user_owner_affiliations
   
   #attr_accessible :username, :email, :password, :password_confirmation

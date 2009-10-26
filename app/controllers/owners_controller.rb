@@ -45,7 +45,7 @@ class OwnersController < ApplicationController
     respond_to do |format|
       if @owner.save
         flash[:notice] = 'Owner was successfully created.'
-        format.html { redirect_to([:user, @owner]) }
+        format.html { redirect_to(new_owner_user_path(@owner)) }
         format.xml  { render :xml => @owner, :status => :created, :location => @owner }
       else
         format.html { render :action => "new" }
