@@ -10,9 +10,11 @@ ActionController::Routing::Routes.draw do |map|
 #	user.resources :owners, :member => { :unlink => :put, :link => :put }
 #  end
   
-  map.resources :owners do |owner|
-	owner.resources :users, :member => { :unlink => :put, :link => :put } 
-  end
+# a owner can have multiple users, but a user can have only one account. any more stuff is assigned by groups or proxy authorization in the authorization layer
+  map.resources :owners, :has_many => :users
+   # do |owner|
+   #  owner.resources :users, :member => { :unlink => :put, :link => :put } 
+   #  end
   
 # map.register "register", new_owner_user_path
   

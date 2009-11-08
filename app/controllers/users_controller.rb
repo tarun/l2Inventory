@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   
-  def index
-    @owner = Owner.find(params[:owner_id])
+  before_filter :set_owner
+  
+  def index    
     @users = @owner.users
   end
   
@@ -36,6 +37,18 @@ class UsersController < ApplicationController
     end
   end
   
+  # DELETE /users/1
+   # DELETE /users/1.xml
+   def destroy
+     @user = User.find(params[:id])
+     @user.destroy
+
+     respond_to do |format|
+       format.html { redirect_to(owner_users_url(@owner)) }
+       format.xml  { head :ok }
+     end
+   end
+   
   def link
     account = Owner.find(params[:owner_id])
     user = User.find(params[:id])
@@ -49,4 +62,10 @@ class UsersController < ApplicationController
     account.users.remove user
     redirect_to root_url
   end
+  
+  private 
+  def set_owner
+    @owner =  (params[:owner_id] == 'current') ? current_owner : Owner.find(params[:owner_id])
+  end
+  
 end

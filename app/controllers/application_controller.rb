@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
 
   layout 'main'
 
-  helper_method :current_user
+  helper_method :current_user, :current_owner
 
   private
   
@@ -25,12 +25,9 @@ class ApplicationController < ActionController::Base
     @current_user = current_user_session && current_user_session.record
   end
   
-  def current_account
-    current_user.accounts
+  def current_owner
+    # @current_owner ||= current_user.owner
+    current_user.owner
   end
-  
-  def current_user_account_affiliation
     
-  end
-  
 end

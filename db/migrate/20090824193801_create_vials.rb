@@ -1,13 +1,17 @@
 class CreateVials < ActiveRecord::Migration
   def self.up
     create_table :vials do |t|
-      t.references :slot
-      t.references :owner
       t.string :name      
+      t.text :comment
+
       t.integer :p_value
       t.datetime :frozen_on
-      t.text :comment
+      
+      t.references :slot
       t.boolean :present
+      
+      t.references :owner
+      
       t.timestamps
     end
   end

@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
-  has_many :user_owner_affiliations
-  has_many :owners, :through => :user_owner_affiliations
+  # belongs_to :account, :class_name => "Owner"
+  belongs_to :owner
   
   #attr_accessible :username, :email, :password, :password_confirmation
   acts_as_authentic  

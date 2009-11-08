@@ -1,4 +1,7 @@
 class OwnersController < ApplicationController
+  
+  before_filter :set_owner, :only => [:show, :edit, :update]
+  
   # GET /owners
   # GET /owners.xml
   def index
@@ -84,12 +87,9 @@ class OwnersController < ApplicationController
     end
   end
   
-  # POST /owners;unlink_user/1
-  # POST /owners;unlink_user/1.xml
-  def unlink_user
-    @owner = Owner.find(params[:id])
-    @user = User.find(params[:user_id])
-    
-    @owner.remove_user
+  private 
+  def set_owner
+    @owner =  (params[:owner_id] == 'current') ? current_owner : Owner.find(params[:owner_id])
   end
+  
 end

@@ -4,6 +4,7 @@ class CreateOwners < ActiveRecord::Migration
       t.string :name
       # t.string :group
       t.text :details
+      
       t.timestamps
     end
   end
